@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Zewnętrzny pierścień tarczy -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1.2"
+        android:pathData="M54,21 A33,33 0 1,1 53.99,21 Z" />
+
+    <!-- Północny trójkąt kierunkowy -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M54,16 L57.5,21.5 L50.5,21.5 Z" />
+
+    <!-- Indeksy stron świata -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M54,86.5 L54,91.5 M86.5,54 L91.5,54 M16.5,54 L21.5,54" />
+
+    <!-- Północna część igły (wypełniona) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M54,23 L46.5,54 L61.5,54 Z" />
+
+    <!-- Południowa część igły (obrys) -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M54,85 L46.5,54 L61.5,54 Z" />
+
+    <!-- Środkowy pivot -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M54,49 A5,5 0 1,1 53.99,49 Z" />
+</vector>

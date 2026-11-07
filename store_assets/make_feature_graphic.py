@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+import subprocess
+
+SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500" width="1024" height="500">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#22222B" />
+      <stop offset="50%" stop-color="#121217" />
+      <stop offset="100%" stop-color="#08080B" />
+    </radialGradient>
+    <linearGradient id="northLight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FF5247" />
+      <stop offset="100%" stop-color="#FF3B30" />
+    </linearGradient>
+    <linearGradient id="northDark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#D70015" />
+      <stop offset="100%" stop-color="#B00010" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background (solid, no alpha) -->
+  <rect width="1024" height="500" fill="url(#bg)" />
+
+  <!-- Technical dial rings on the left (center 260, 250) -->
+  <g transform="translate(260, 250)">
+    <circle cx="0" cy="0" r="210" fill="none" stroke="#252530" stroke-width="2" />
+    <circle cx="0" cy="0" r="185" fill="none" stroke="#1D1D26" stroke-width="4" />
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#22222C" stroke-width="1.5" stroke-dasharray="6 8" />
+
+    <!-- Cardinal markers -->
+    <polygon points="0,-165 8,-142 -8,-142" fill="#FF453A" />
+    <line x1="0" y1="145" x2="0" y2="165" stroke="#8E8E93" stroke-width="3" stroke-linecap="round" />
+    <line x1="145" y1="0" x2="165" y2="0" stroke="#8E8E93" stroke-width="3" stroke-linecap="round" />
+    <line x1="-165" y1="0" x2="-145" y2="0" stroke="#8E8E93" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Compass Needle (rotated -25 deg for dynamic look) -->
+    <g transform="rotate(-25)" filter="url(#shadow)">
+      <!-- North (Red) -->
+      <polygon points="0,-135 -30,0 0,0" fill="url(#northLight)" />
+      <polygon points="0,-135 0,0 30,0" fill="url(#northDark)" />
+      <!-- South (Silver) -->
+      <polygon points="0,135 0,0 -30,0" fill="#8E8E93" />
+      <polygon points="0,135 30,0 0,0" fill="#E5E5EA" />
+      <!-- Pivot -->
+      <circle cx="0" cy="0" r="24" fill="#181820" stroke="#FFFFFF" stroke-width="3.5" />
+      <circle cx="0" cy="0" r="12" fill="#FF453A" />
+      <circle cx="-3" cy="-3" r="3.5" fill="#FFFFFF" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- Typography & Features on the right -->
+  <g transform="translate(560, 160)">
+    <!-- Pill Badge -->
+    <rect x="0" y="0" width="190" height="28" rx="14" fill="#FF453A20" stroke="#FF453A55" stroke-width="1.2" />
+    <text x="95" y="19" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#FF453A" text-anchor="middle" letter-spacing="1.5">PIXEL 9 PRO READY</text>
+
+    <!-- App Title -->
+    <text x="0" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="900" fill="#FFFFFF" letter-spacing="-1">Kompas</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="500" fill="#A1A1AA">Precyzyjny cyfrowy kompas i azymut 3D</text>
+
+    <!-- Features Row -->
+    <g transform="translate(0, 175)">
+      <rect x="0" y="0" width="125" height="34" rx="8" fill="#1C1C24" stroke="#2D2D38" stroke-width="1"/>
+      <text x="62" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#D4D4D8" text-anchor="middle">Dark Titanium</text>
+
+      <rect x="135" y="0" width="115" height="34" rx="8" fill="#1C1C24" stroke="#2D2D38" stroke-width="1"/>
+      <text x="192" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#D4D4D8" text-anchor="middle">Zero Reklam</text>
+
+      <rect x="260" y="0" width="125" height="34" rx="8" fill="#1C1C24" stroke="#2D2D38" stroke-width="1"/>
+      <text x="322" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#D4D4D8" text-anchor="middle">100% Offline</text>
+    </g>
+  </g>
+</svg>"""
+
+with open("/home/deck/GIT/android/kompas/store_assets/feature_graphic.svg", "w") as f:
+    f.write(SVG)
+
+subprocess.run([
+    "rsvg-convert",
+    "-w", "1024",
+    "-h", "500",
+    "/home/deck/GIT/android/kompas/store_assets/feature_graphic.svg",
+    "-o", "/home/deck/GIT/android/kompas/store_assets/feature_graphic.png"
+], check=True)
+
+print("Feature graphic generated successfully: 1024x500")
