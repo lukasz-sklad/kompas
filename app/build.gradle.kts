@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
   namespace = "one.lmk.kompas"
-  compileSdk = 36
+  compileSdk = 37
 
   defaultConfig {
     applicationId = "one.lmk.kompas"

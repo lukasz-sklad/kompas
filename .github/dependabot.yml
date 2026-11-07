@@ -3,8 +3,17 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    groups:
+      android-core:
+        patterns:
+          - "com.android.*"
+          - "gradle-wrapper"
+      compose-and-kotlin:
+        patterns:
+          - "androidx.*"
+          - "org.jetbrains.kotlin*"
     labels:
       - "dependencies"
       - "security"
