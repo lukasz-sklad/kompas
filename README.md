@@ -69,7 +69,7 @@ cd kompas
 
 Repozytorium korzysta z automatycznych narzędzi weryfikacji bezpieczeństwa:
 * **GitHub CodeQL:** Skanowanie kodu pod kątem podatności pamięciowych, wycieków i błędów implementacji.
-* **Dependabot:** Cotygodniowy monitoring zależności przeciwko globalnej bazie CVE.
+* **Dependabot:** Automatyczny monitoring zależności pod kątem podatności w globalnej bazie CVE.
 * Szczegółowe zasady zgłaszania uwag znajdziesz w pliku [SECURITY.md](SECURITY.md).
 
 ---
